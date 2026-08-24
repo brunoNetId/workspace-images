@@ -3,6 +3,8 @@ name: camel
 version: v1.0
 description: "Installs Apache Camel CLI (includes JBang)"
 envs:
+- name: HOME
+  value: /home/user
 - name: PATH
   value: ${PATH}:/opt/camel/.local/bin
 execute:

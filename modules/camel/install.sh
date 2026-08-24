@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-# Make /home/user writable for UID 1000 (required for VS Code terminal)
+# Fix user home directory (workspace-base sets it to /projects, which is a PVC mount)
+mkdir -p /home/user
 chown 1000:1000 /home/user
 chmod 755 /home/user
+usermod -d /home/user user
+cp /etc/skel/.bashrc /home/user/.bashrc
+chown 1000:1000 /home/user/.bashrc
 
 # Install Camel CLI to a non-PVC location
 export HOME=/opt/camel
