@@ -1,0 +1,9 @@
+schema_version: 1
+name: camel
+version: v1.0
+description: "Installs Apache Camel CLI (includes JBang)"
+envs:
+- name: PATH
+  value: ${PATH}:/opt/camel/.local/bin
+execute:
+- script: install.sh
