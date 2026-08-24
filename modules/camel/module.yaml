@@ -6,6 +6,6 @@ envs:
 - name: HOME
   value: /home/user
 - name: PATH
-  value: ${PATH}:/opt/camel/.local/bin
+  value: ${PATH}:/home/user/.local/bin
 execute:
 - script: install.sh
