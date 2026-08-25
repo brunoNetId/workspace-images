@@ -16,7 +16,9 @@ export HOME=/home/user
 curl -fsSL https://camel.apache.org/install.sh | sh
 export PATH=$PATH:/home/user/.local/bin
 camel version
-chown -R 1000:0 /home/user
-chmod -R g=u /home/user
 runuser -u user -- camel plugin add kubernetes
 runuser -u user -- camel plugin add forage
+
+# Make /home/user accessible by arbitrary UIDs (OpenShift GID 0 pattern)
+chown -R 1000:0 /home/user
+chmod -R g=u /home/user
