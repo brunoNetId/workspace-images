@@ -17,5 +17,6 @@ curl -fsSL https://camel.apache.org/install.sh | sh
 export PATH=$PATH:/home/user/.local/bin
 camel version
 chown -R 1000:1000 /home/user/.local
+chmod -R a+rX /home/user/.local
 runuser -u user -- camel plugin add kubernetes
 runuser -u user -- camel plugin add forage
