@@ -12,13 +12,15 @@ echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.
 chmod 644 /etc/profile.d/custom_prompt.sh
 
 # Install Camel CLI
+CAMEL_VERSION="4.22.2"
+FORAGE_VERSION="1.6.2"
 export HOME=/home/user
-curl -fsSL https://camel.apache.org/install.sh | sh
+curl -fsSL https://camel.apache.org/install.sh | sh -s -- --version ${CAMEL_VERSION}
 export PATH=$PATH:/home/user/.local/bin
 camel version
 chown -R 1000:1000 /home/user/.local
 runuser -u user -- camel plugin add kubernetes
-runuser -u user -- camel plugin add forage
+runuser -u user -- camel plugin add forage --version=${FORAGE_VERSION}
 
 # Make /home/user accessible by arbitrary UIDs (OpenShift GID 0 pattern)
 chown -R 1000:0 /home/user
